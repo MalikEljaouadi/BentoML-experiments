@@ -1,0 +1,20 @@
+# After finishing the service definition, we build the SERVICE and MODEL into a "bento" : Bento contains
+# "all the source code", "model files" and "required dependencies"
+
+service: "service:svc"
+labels:
+  owner: malik
+  stage: dev
+include:
+  - "*.py"
+  - "poetry.lock"
+  - "pyproject.toml"
+python:
+  packages:
+    - scikit-learn
+    - pandas
+
+# After configuring the bentofile.yaml file we run this command "bentoml build" to finalize creating the Bento
+# After building binto, we can serve it in production just using the following command : "bentoml serve iris_classifier:latest --production"
+# We can generate a docker image for this Bento for production deployment using the following command: "bentoml containerize iris_classifier:latest"
+
